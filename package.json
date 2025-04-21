@@ -1,10 +1,18 @@
 {
   "name": "sdk",
   "version": "1.0.0",
-  "description": "## Resources",
-  "main": "index.js",
+  "description": "",
+  "main": "dist/index.js",
+  "module": "dist/index.m.js",
+  "unpkg": "dist/index.umd.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    "require": "./dist/index.js",
+    "default": "./dist/index.modern.js"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "rm -rf dist && microbundle --tsconfig tsconfig.json --no-sourcemap",
+    "dev": "microbundle --watch --tsconfig tsconfig.json --no-sourcemap"
   },
   "keywords": [],
   "author": "",
@@ -12,5 +20,11 @@
   "devDependencies": {
     "microbundle": "^0.15.1",
     "typescript": "^5.8.3"
-  }
+  },
+  "dependencies": {
+    "isomorphic-unfetch": "^4.0.2"
+  },
+  "files": [
+    "dist"
+  ]
 }
